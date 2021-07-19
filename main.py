@@ -35,14 +35,17 @@ def best_ratio(tabs):
     return tabs[5][max_index]
 
 def main():
+    sheet_loc = input("File name/path : ")
     sheet_n = int(input("Sheet number : "))
-    data = get_data(sheet_n,"Therizi_BOSS.xlsx")
+    data = get_data(sheet_n,sheet_loc)
     l_best = []
     
     for i in range(1,89):
         l_best.append([i,best_ratio(make_tab(i,data))])
     data = np.array(l_best)
     x, y = data.T
+    plt.xlabel('melee perk', fontsize=14)
+    plt.ylabel('M/HP perk', fontsize=14)   
     plt.scatter(x,y)
     plt.show()
 
